@@ -1,5 +1,6 @@
-import ComponentClass from './components/componentClass/ComponentClass';
 import React from 'react';
+import ComponentClass from './components/componentClass/ComponentClass';
+import PureCompClass from './components/pureComponentClass/PureComponentClass';
 import randomWords from 'random-words';
 
 // 1. Когда приложение запускается, инициализируется данные класс App
@@ -8,6 +9,7 @@ class App extends React.Component {
   state = {
     count: 0,
     str: 'Some string or phrase',
+    pure: 'pure',
   };
 
   // 3. описывается componentDidMount, но не запускается
@@ -15,19 +17,31 @@ class App extends React.Component {
   // вызывается после render()
   componentDidMount() {
     setInterval(() => {
-      this.setState({
-        count: this.state.count + 1,
-        str: randomWords(),
-      });
-    }, 1000);
+      // при четном вызове setState и при React.PureComponent
+      // PureComponent.jsx не будет вызываться
+      if (this.state.count % 2) {
+        this.setState({
+          count: this.state.count + 1,
+          str: randomWords(),
+        });
+      } else {
+        this.setState({
+          count: this.state.count + 5,
+          str: randomWords(),
+          pure: randomWords(),
+        });
+      }
+    }, 3000);
   }
 
   // описывается render и компонент, который импортируется - отрисовывается,
-  // чтобы ему отрисоваться,создается классовый компонент в файле ComponentClass
+  // чтобы ему отрисоваться,создается классовый компонент
+  // в файле ComponentClass
   render() {
     return (
       <header className="App-header">
         <ComponentClass string={this.state.str}/>
+        <PureCompClass string={this.state.pure}/>
       </header>
     );
   }
