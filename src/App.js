@@ -1,7 +1,9 @@
+import ComponentClass from './components/componentClass/ComponentClass';
+
 function App() {
   return (
     <header className="App-header">
-      <p>Hello React</p>
+      <ComponentClass />
     </header>
   );
 }
