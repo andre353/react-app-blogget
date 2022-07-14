@@ -5,10 +5,10 @@ export default class ComponentClass extends React.Component {
   render() {
     console.log('-------');
     console.log('ComponentsClass');
-    return <p>{this.props.str}</p>;
+    return <p>{this.props.string}</p>;
   }
 }
 
 ComponentClass.propTypes = {
-  str: PropTypes.string
+  string: PropTypes.string
 };
