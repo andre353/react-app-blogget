@@ -1,6 +1,7 @@
 import React from 'react';
 import ComponentClass from './components/componentClass/ComponentClass';
 import PureCompClass from './components/pureComponentClass/PureComponentClass';
+import ComponentFunc from './components/ComponentFunc/ComponentFunc';
 import randomWords from 'random-words';
 
 // 1. Когда приложение запускается, инициализируется данные класс App
@@ -10,6 +11,7 @@ class App extends React.Component {
     count: 0,
     str: 'Some string or phrase',
     pure: 'pure',
+    func: 'func'
   };
 
   // 3. описывается componentDidMount, но не запускается
@@ -29,9 +31,10 @@ class App extends React.Component {
           count: this.state.count + 5,
           str: randomWords(),
           pure: randomWords(),
+          func: randomWords(),
         });
       }
-    }, 3000);
+    }, 10000);
   }
 
   // описывается render и компонент, который импортируется - отрисовывается,
@@ -42,6 +45,7 @@ class App extends React.Component {
       <header className="App-header">
         <ComponentClass string={this.state.str}/>
         <PureCompClass string={this.state.pure}/>
+        <ComponentFunc funcattr={this.state.func}/>
       </header>
     );
   }
