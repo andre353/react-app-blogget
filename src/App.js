@@ -1,7 +1,7 @@
 import React from 'react';
 import ComponentClass from './components/componentClass/ComponentClass';
 import PureCompClass from './components/pureComponentClass/PureComponentClass';
-import ComponentFunc from './components/ComponentFunc';
+import {ComponentFunc} from './components/ComponentFunc';
 import randomWords from 'random-words';
 
 // 1. Когда приложение запускается, инициализируется данные класс App
