@@ -139,7 +139,12 @@
         "code": 80,
         "tabWidth": 2,
         "ignoreUrls": true,
-        "ignorePattern": "goog.(module|require)"
+        "ignorePattern": "goog.(module|require|d='([\\s\\S]*?)')",
+        "ignoreComments": true, 
+        "ignoreTrailingComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
       }
     ],
     "new-cap": "error",
