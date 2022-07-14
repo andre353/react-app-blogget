@@ -3,6 +3,7 @@ import ComponentClass from './components/componentClass/ComponentClass';
 import PureCompClass from './components/pureComponentClass/PureComponentClass';
 import {ComponentFunc} from './components/ComponentFunc';
 import randomWords from 'random-words';
+import Button from './components/Button';
 
 // 1. Когда приложение запускается, инициализируется данные класс App
 class App extends React.Component {
@@ -43,6 +44,7 @@ class App extends React.Component {
   render() {
     return (
       <header className="App-header">
+        <Button text="Кликни" />
         <ComponentClass string={this.state.str}/>
         <PureCompClass string={this.state.pure}/>
         <ComponentFunc funcattr={this.state.func}/>
