@@ -1,9 +1,10 @@
 import ComponentClass from './components/componentClass/ComponentClass';
+import randomWords from 'random-words';
 
 function App() {
   return (
     <header className="App-header">
-      <ComponentClass />
+      <ComponentClass str={randomWords()}/>
     </header>
   );
 }
