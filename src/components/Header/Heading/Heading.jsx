@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Heading.module.css';
 import PropTypes from 'prop-types';
 
-const Heading = (props) => (
+export const Heading = (props) => (
   <div className={style.heading}>
     <h1>{props.heading}</h1>
   </div>
@@ -11,5 +11,3 @@ const Heading = (props) => (
 Heading.propTypes = {
   heading: PropTypes.string
 };
-
-export default Heading;

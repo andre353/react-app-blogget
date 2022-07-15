@@ -5,7 +5,7 @@
 
 .gridContainer {
   display: grid;
-  grid-template-columns: 30px 2fr 30px;
+  grid-template-columns: 30px 2fr 60px;
   align-items: center;
   gap: 15px;
 }

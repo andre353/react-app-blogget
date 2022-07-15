@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Search.module.css';
 
-const Search = (props) => (
+export const Search = (props) => (
   <form className={style.form}>
     <input className={style.search} type="search" />
     <button className={style.button}>
@@ -23,5 +23,3 @@ const Search = (props) => (
     </button>
   </form>
 );
-
-export default Search;

@@ -6,7 +6,7 @@ import Search from './Search';
 import Auth from './Auth';
 import Heading from './Heading';
 
-const Header = (props) => (
+export const Header = (props) => (
   <header className={style.header}>
     <Layout>
       <div className={style.gridContainer}>
@@ -18,5 +18,3 @@ const Header = (props) => (
     </Layout>
   </header>
 );
-
-export default Header;

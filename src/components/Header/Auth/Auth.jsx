@@ -3,7 +3,7 @@ import style from './Auth.module.css';
 import PropTypes from 'prop-types';
 
 
-const Auth = ({auth}) => (
+export const Auth = ({auth}) => (
   <button className={style.button}>
     {auth ? (
       auth
@@ -19,5 +19,3 @@ const Auth = ({auth}) => (
 Auth.propTypes = {
   auth: PropTypes.string
 };
-
-export default Auth;
