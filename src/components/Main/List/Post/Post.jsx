@@ -2,6 +2,7 @@ import style from './Post.module.css';
 import nophoto from './img/notphoto.jpg';
 import PropTypes from 'prop-types';
 import formatDate from '../../../../utils/formatDate';
+import Rating from './Raiting';
 
 export const Post = ({postData}) => {
   const {title, author, ups, date} = postData;
@@ -16,11 +17,7 @@ export const Post = ({postData}) => {
         <a className={style.linkAuthor} href="#author">{author}</a>
       </div>
 
-      <div className={style.rating}>
-        <button className={style.up} aria-label='Повысить рейтинг'></button>
-        <p className={style.ups}>{ups}</p>
-        <button className={style.down} aria-label='Понизить рейтинг'></button>
-      </div>
+      <Rating ups={ups}/>
 
       <time className={style.date} dateTime={date}>{formatDate(date)}</time>
     </li>
