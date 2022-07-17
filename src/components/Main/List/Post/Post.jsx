@@ -5,6 +5,8 @@ import PostContent from './PostContent';
 import Rating from '../../../common/Raiting';
 import Image from '../../../common/Image';
 import Date from '../../../common/Date';
+import Button from '../../../common/Button';
+import svg from './img/delete.svg';
 
 export const Post = ({postData}) => {
   const {title, author, ups, date} = postData;
@@ -17,6 +19,8 @@ export const Post = ({postData}) => {
       <Rating ups={ups}/>
 
       <Date date={date} />
+
+      <Button styles={style.delete} svg={svg} />
     </li>
   );
 };

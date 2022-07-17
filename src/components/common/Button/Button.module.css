@@ -1,0 +1,9 @@
+.btn {
+  background-color: tomato;
+  color: black;  
+}
+
+#delete {
+  border: 1px solid black;
+  display: block;
+}
