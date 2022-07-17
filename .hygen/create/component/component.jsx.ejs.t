@@ -1,11 +1,8 @@
 ---
 to: <%= absPath %>/<%= component_name%>.jsx
 ---
-import React from 'react';
-import style from './<%= component_name %>.module.css';
+// import style from './<%= component_name %>.module.css';
 
-const <%= component_name %> = (props) => (
-  <div className={style.container}></div>
+export const <%= component_name %> = (props) => (
+  <div></div>
 );
-
-export default <%= component_name %>;
