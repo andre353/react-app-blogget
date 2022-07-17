@@ -1,25 +1,22 @@
 import style from './Post.module.css';
 import nophoto from './img/notphoto.jpg';
 import PropTypes from 'prop-types';
-import formatDate from '../../../../utils/formatDate';
-import Rating from './Raiting';
+import PostContent from './PostContent';
+import Rating from '../../../common/Raiting';
+import Image from '../../../common/Image';
+import Date from '../../../common/Date';
 
 export const Post = ({postData}) => {
   const {title, author, ups, date} = postData;
   return (
     <li className={style.post}>
-      <img className={style.img} src={nophoto} alt={title} />
+      <Image styles={style.img} src={nophoto} alt={title} />
 
-      <div className={style.content}>
-        <h2 className={style.title}>
-          <a className={style.linkPost} href="#post">{title}</a>
-        </h2>
-        <a className={style.linkAuthor} href="#author">{author}</a>
-      </div>
+      <PostContent title={title} author={author} />
 
       <Rating ups={ups}/>
 
-      <time className={style.date} dateTime={date}>{formatDate(date)}</time>
+      <Date date={date} />
     </li>
   );
 };
@@ -29,6 +26,7 @@ Post.propTypes = {
     title: PropTypes.string,
     author: PropTypes.string,
     ups: PropTypes.number,
-    date: PropTypes.instanceOf(Date),
+    date: PropTypes.string,
+    // date: PropTypes.instanceOf(Date),
   }),
 };
