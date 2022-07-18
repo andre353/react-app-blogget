@@ -20,7 +20,9 @@ export const Main = (props) => {
   // метод concat() добавит к массиву объектов list новый объект с random id
   // при клике на кнопку Добавить таб
   const addItem = () => {
-    setList(list.concat(assignId({value: 'Новый пост'})));
+    // деструкторизация, спред оператор, добавление нового объекта с добавлением id
+    setList([...list, assignId({value: 'Новый пост'})]); // 2 вариант
+    // setList(list.concat(assignId({value: 'Новый пост'}))); // 1 вариант
   };
 
   // console.log(LIST);
