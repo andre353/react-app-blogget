@@ -28,11 +28,16 @@ export const Post = ({postData}) => {
 };
 
 Post.propTypes = {
-  postData: PropTypes.shape({
-    title: PropTypes.string,
-    author: PropTypes.string,
-    ups: PropTypes.number,
-    date: PropTypes.string,
-    // date: PropTypes.instanceOf(Date),
-  }),
+  postData: PropTypes.object
 };
+
+// Post.propTypes = {
+//   postData: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       title: PropTypes.string,
+//       author: PropTypes.string,
+//       ups: PropTypes.number,
+//       date: PropTypes.string,
+//     })
+//   ),
+// };

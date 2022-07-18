@@ -3,11 +3,10 @@ const formatDate = date => {
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
-    hour: '2-digit',
+    hour: 'numeric',
     minute: '2-digit',
   };
-  return new Intl.DateTimeFormat('ru', options)
-    .format(new Date(date));
+  return new Intl.DateTimeFormat('ru', options).format(new Date(date));
 };
 
 export default formatDate;
