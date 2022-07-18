@@ -17,10 +17,21 @@ const LIST = [
 export const Main = (props) => {
   const [list, setList] = useState(LIST);
 
+  // метод concat() добавит к массиву объектов list новый объект с random id
+  // при клике на кнопку Добавить таб
+  const addItem = () => {
+    setList(list.concat(assignId({value: 'Новый пост'})));
+  };
+
+  // console.log(LIST);
+
   return (
-    <Layout className={style.main}>
-      <Tabs list={list} setList={setList} />
-      <List />
-    </Layout>
+    <main className={style.main}>
+      <Layout className={style.main}>
+        <button onClick={addItem}>Добавить таб</button>
+        <Tabs list={list} setList={setList} />
+        <List />
+      </Layout>
+    </main>
   );
 };
