@@ -1,3 +1,4 @@
+import {assignId} from '../../../utils/generateRandomId';
 import style from './List.module.css';
 import Post from './Post';
 
@@ -27,12 +28,14 @@ export const List = (props) => {
       ups: 44,
       date: '2022-04-24T04:44:00.000Z'
     }
-  ];
+  ].map(assignId);
 
   return (
     <ul className={style.list}>
       {
-        postsData.map((postData, i) => <Post key={i} postData={postData} />)
+        postsData.map((postData) =>
+          <Post key={postData.id} postData={postData} />
+        )
       }
     </ul>
   );
