@@ -30,8 +30,7 @@ export const Main = (props) => {
   return (
     <main className={style.main}>
       <Layout className={style.main}>
-        <button onClick={addItem}>Добавить таб</button>
-        <Tabs list={list} setList={setList} />
+        <Tabs list={list} setList={setList} addItem={addItem} />
         <List />
       </Layout>
     </main>
