@@ -19,8 +19,9 @@ const LIST = [
 // добавили к каждому объекту свойство id
 
 export const Tabs = () => {
+  // изначально дропдайн закрыт
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // true for mobile-first
+  // true for mobile-first - дропдаун как таковой имеется
   const [isDropdown, setIsDropdown] = useState(true);
 
   const handleResize = () => {
@@ -32,16 +33,18 @@ export const Tabs = () => {
   };
 
   useEffect(() => {
+    // debounceRaf() обертка над requestAnimationFrames
     const debounceResize = debounceRaf(handleResize);
     debounceResize();
     window.addEventListener('resize', debounceResize);
-    return () => {
+    return () => { // при демонтаже компонента снимает прослушку
       window.removeEventListener('resize', debounceResize);
     };
   }, []);
 
   return (
     <div className={style.container}>
+      {/* отображаем только на мобильной версии до 767 вкл */}
       {isDropdown && (
         <div className={style.wrapperBtn}>
           <button
@@ -52,7 +55,7 @@ export const Tabs = () => {
           </button>
         </div>
       )}
-
+      {/* отображаем когда дропдаун открыт, либо на десктопе > 768px */}
       {(isDropdownOpen || !isDropdown) && (
         <ul
           className={style.list}

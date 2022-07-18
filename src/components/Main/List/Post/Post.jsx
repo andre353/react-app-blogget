@@ -6,7 +6,7 @@ import Rating from '../../../common/Raiting';
 import Image from '../../../common/Image';
 import Date from '../../../common/Date';
 import Button from '../../../common/Button';
-import svg from './img/delete.svg';
+import {ReactComponent as DeleteIcon} from './img/delete.svg';
 
 export const Post = ({postData}) => {
   const {title, author, ups, date} = postData;
@@ -20,7 +20,9 @@ export const Post = ({postData}) => {
 
       <Date date={date} />
 
-      <Button styles={style.delete} svg={svg} />
+      <Button styles={style.delete}>
+        <DeleteIcon />
+      </Button>
     </li>
   );
 };
