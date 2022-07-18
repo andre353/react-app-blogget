@@ -2,17 +2,29 @@
 // requestAnimationFrames, которая сообщает браузеру,
 // о необходимости выполнить принятую handleResize
 // перед следующей отрисовкой
+
+// Returns a function, that, as long as it continues to be invoked, will not be triggered. The function will be called after it stops being called for `wait` milliseconds.
 export const debounceRaf = (fn) => {
   let raf = 0;
-  // аргументы с принятой функции
+  // This is the function that is returned and will be executed many times
+  // We spread (...args) to capture any number of parameters we want to pass from fn
   return (...args) => {
-    if (raf) return; // если requestAnimationFrames уже запущена, то return
-    // если нет:
+    // console.log(raf);
+    // условие - стопор
+    if (raf) return; // если raf = 0; то выполняет дальше
+    // чтобы все остальные вызовы в течение фракции 1000/60(?) игнорировались
     // returns an ID you can use to cancel it - обычно возвращает 1, если других requestAnimationFrames не запущено
-    raf = requestAnimationFrame(() => {
-      fn(...args);
-      raf = 0;
-    });
+
+    // Restart the debounce waiting period.
+    // returns a truthy value (it differs in web vs Node)
+    raf = requestAnimationFrame(
+      // The callback function to be executed after
+      // the debounce time has elapsed
+      () => {
+        fn(...args);
+        raf = 0;
+      }
+    );
   };
 };
 // requestAnimationFrame takes a function and tells the browser to execute that function AFTER the next repaint.
