@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import Layout from '../Layout';
 import style from './Main.module.css';
 import Tabs from './Tabs';
@@ -13,11 +14,13 @@ const LIST = [
 ].map(assignId);
 // добавили к каждому объекту свойство id
 
-console.log(LIST);
+export const Main = (props) => {
+  const [list, setList] = useState(LIST);
 
-export const Main = (props) => (
-  <Layout className={style.main}>
-    <Tabs list={LIST} />
-    <List />
-  </Layout>
-);
+  return (
+    <Layout className={style.main}>
+      <Tabs list={list} setList={setList} />
+      <List />
+    </Layout>
+  );
+};
