@@ -1,6 +1,6 @@
 import style from './Tabs.module.css';
 import PropTypes from 'prop-types';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {assignId} from '../../../utils/generateRandomId';
 
 import {ReactComponent as ArrowIcon} from './img/arrow.svg';
@@ -8,6 +8,7 @@ import {ReactComponent as EyeIcon} from './img/eye.svg';
 import {ReactComponent as HomeIcon} from './img/home.svg';
 import {ReactComponent as PostIcon} from './img/post.svg';
 import {ReactComponent as SaveIcon} from './img/save.svg';
+import {debounceRaf} from '../../../utils/debounceRaf';
 
 const LIST = [
   {value: 'Главная', Icon: EyeIcon},
@@ -19,19 +20,40 @@ const LIST = [
 
 export const Tabs = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // true for mobile-first
+  const [isDropdown, setIsDropdown] = useState(true);
+
+  const handleResize = () => {
+    if (document.documentElement.clientWidth < 768) {
+      setIsDropdown(true);
+    } else {
+      setIsDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    const debounceResize = debounceRaf(handleResize);
+    debounceResize();
+    window.addEventListener('resize', debounceResize);
+    return () => {
+      window.removeEventListener('resize', debounceResize);
+    };
+  }, []);
 
   return (
     <div className={style.container}>
-      <div className={style.wrapperBtn}>
-        <button
-          className={style.btn}
-          onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-          Меню
-          <ArrowIcon width={15} height={15} />
-        </button>
-      </div>
+      {isDropdown && (
+        <div className={style.wrapperBtn}>
+          <button
+            className={style.btn}
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            Меню
+            <ArrowIcon width={15} height={15} />
+          </button>
+        </div>
+      )}
 
-      {isDropdownOpen && (
+      {(isDropdownOpen || !isDropdown) && (
         <ul
           className={style.list}
           onClick={() => setIsDropdownOpen(false)}>
