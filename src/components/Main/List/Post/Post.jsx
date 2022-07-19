@@ -20,8 +20,8 @@ export const Post = ({postData}) => {
 
       <Date date={date} />
 
-      <Button styles={style.delete}>
-        <DeleteIcon />
+      <Button className={style.delete}>
+        <DeleteIcon color={`var(--grey66)`} />
       </Button>
     </li>
   );

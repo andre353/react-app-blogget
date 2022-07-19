@@ -5,14 +5,15 @@ import PropTypes from 'prop-types';
 export const Text = (props) => {
   const {
     As = 'span',
-    color = 'black',
+    color = '#333333',
     size,
     tsize,
     dsize,
     className,
     children,
     href,
-    center
+    center,
+    fontWeight,
   } = props;
 
   // console.log(center);
@@ -24,6 +25,7 @@ export const Text = (props) => {
     {[style[`fs${size}`]]: size},
     {[style[`fst${tsize}`]]: tsize},
     {[style[`fsd${dsize}`]]: dsize},
+    {[style[`fw${fontWeight}`]]: fontWeight},
   );
 
   return (
@@ -42,7 +44,9 @@ Text.propTypes = {
     PropTypes.string,
     PropTypes.object,
     PropTypes.array,
+    PropTypes.number,
   ]),
   href: PropTypes.string,
+  fontWeight: PropTypes.string,
   center: PropTypes.bool,
 };
