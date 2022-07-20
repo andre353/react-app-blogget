@@ -17,14 +17,16 @@ export const Button = (props) => {
   const classes = classNames(
     className,
     style[color],
-    style[bgColor],
+    {[style.bgColor]: bgColor},
     {[style.center]: center},
     {[style[`fs${width}`]]: width},
     {[style[`fs${height}`]]: height},
   );
 
   return (
-    <button className={classes}>{children && children}</button>
+    <button
+      className={classes}
+      onClick={props.handleClean}>{children && children}</button>
     // <button className={`${style.btn} ${styles && styles}`}>{svg && <Image src={svg}/>}</button>;
   );
 };
@@ -43,4 +45,5 @@ Button.propTypes = {
     PropTypes.number,
   ]),
   center: PropTypes.bool,
+  handleClean: PropTypes.func,
 };
