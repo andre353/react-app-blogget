@@ -1,14 +1,13 @@
-import {useState, useEffect, useToken} from 'react'; // все создаваемые хуки используют встроенные хуки
+import {useState, useEffect} from 'react'; // все создаваемые хуки используют встроенные хуки
 import {URL_API} from '../api/const';
 
-export const useAuth = (state) => {
-  const [auth, setAuth] = useState(state);
-  const [token, delToken] = useToken('');
+export const useAuth = (token) => {
+  const [auth, setAuth] = useState({});
 
   // Task 3
   const handleErrors = (res) => {
     if (!res.ok || res.status === 401) {
-      delToken();
+      // delToken();
       throw Error(res.statusText);
     }
     return res;
@@ -34,5 +33,7 @@ export const useAuth = (state) => {
       });
   }, [token]);
 
-  return [auth];
+  const clearAuth = () => setAuth({});
+
+  return [auth, clearAuth];
 };
