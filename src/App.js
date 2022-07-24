@@ -8,8 +8,8 @@ function App() {
   const {Provider} = tokenContext; // createContext возращает методы Provider и Consumer
 
   return (
-    <Provider>
-      <Header token={token} delToken={delToken} />
+    <Provider value={{token, delToken}}>
+      <Header />
       <Main />
     </Provider>
   );

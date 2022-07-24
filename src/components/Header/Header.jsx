@@ -5,23 +5,25 @@ import Logo from './Logo';
 import Search from './Search';
 import Auth from './Auth';
 import Heading from './Heading';
-import PropTypes from 'prop-types';
+import {tokenContext} from '../context/tokenContext';
 
-export const Header = ({token, delToken, auth}) => (
-  <header className={style.header}>
-    <Layout>
-      <div className={style.gridContainer}>
-        <Logo />
-        <Heading heading="Главная"/>
-        <Search />
-        <Auth token={token} delToken={delToken} />
-      </div>
-    </Layout>
-  </header>
-);
+export const Header = () => {
+  // Consumer получит те данные, которые мы передали в Provider в App.js
+  // в Consumer также есть встроенный объект, который записываем передаваемые значения как свои свойства - ctx ниже
+  const {Consumer} = tokenContext;
 
-Header.propTypes = {
-  token: PropTypes.string,
-  auth: PropTypes.any,
-  delToken: PropTypes.func,
+  return (
+    <header className={style.header}>
+      <Layout>
+        <div className={style.gridContainer}>
+          <Logo />
+          <Heading heading="Главная"/>
+          <Search />
+          <Consumer>
+            {(ctx) => <Auth token={ctx.token} delToken={ctx.delToken} />}
+          </Consumer>
+        </div>
+      </Layout>
+    </header>
+  );
 };
