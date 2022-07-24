@@ -20,7 +20,8 @@ export const Header = () => {
           <Heading heading="Главная"/>
           <Search />
           <Consumer>
-            {(ctx) => <Auth token={ctx.token} delToken={ctx.delToken} />}
+            {/* если передаваемые св-ва и атрибуты одноименны  - т.е. в Auth получаем как изначально наименовались */}
+            {(ctx) => <Auth {...ctx} />}
           </Consumer>
         </div>
       </Layout>
